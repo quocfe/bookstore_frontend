@@ -1,0 +1,126 @@
+.book-details {
+	padding: 6rem 0;
+}
+
+.book-details .container {
+	padding: 4rem;
+}
+
+.back-btn {
+	margin-left: 20px;
+	margin-bottom: 2.6rem;
+	transition: var(--transition);
+}
+.back-btn:hover {
+	color: var(--purple-color);
+}
+.back-btn span {
+	margin-left: 1rem;
+}
+.book-details-content {
+	gap: 4rem;
+	background: #fff;
+	padding: 2rem 4rem;
+	border-radius: 8px;
+}
+.book-details-img {
+	max-height: 600px;
+	overflow: hidden;
+}
+.book-details-img img {
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.book-details-item {
+	margin-bottom: 1.4rem;
+}
+.book-details-item.description {
+	opacity: 0.8;
+}
+.book-details-info {
+	overflow-y: scroll;
+	max-height: 600px;
+	padding: 1.4rem;
+}
+.book-details-info::-webkit-scrollbar {
+	width: 1px;
+}
+.book-details-info::-webkit-scrollbar-track {
+	border-radius: 8px;
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.book-details-info::-webkit-scrollbar-thumb {
+	background-color: var(--purple-color);
+	outline: -1px solid slategray;
+	border-radius: 8px;
+}
+
+.book-details .book-description,
+.book-details .community-reviews,
+.book-details .rating-review {
+	background: #fff;
+	margin-top: 3rem;
+	padding: 2rem 4rem;
+	border-radius: 8px;
+}
+
+.book-details .rating-review .rounded-circle {
+	width: 90px;
+	height: 90px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.book-details .book-description h3 {
+	font-size: 2rem;
+	background: #8d27ae;
+	width: fit-content;
+	padding: 8px 14px;
+	border-radius: 8px;
+	color: #fff;
+}
+
+.book-details .book-description .description-text {
+	text-align: justify;
+}
+
+.book-details .info-reviewer img {
+	width: 50px;
+	height: 50px;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.book-details .box-review {
+	min-height: 150px;
+	padding: 30px 10px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.book-details .box-review .content-review img {
+	object-fit: cover;
+	height: 80vh;
+}
+
+.book-details .btnShowReview {
+	font-size: 14px;
+	background: #0093e9;
+	border-color: #0093e9;
+}
+
+@media screen and (min-width: 768px) {
+	.book-details-content {
+		grid-template-columns: 40% 60%;
+		gap: 0;
+	}
+	.book-details-img {
+		padding: 0 6rem 0 2rem;
+	}
+	.book-details-img img {
+		max-width: 100%;
+	}
+}

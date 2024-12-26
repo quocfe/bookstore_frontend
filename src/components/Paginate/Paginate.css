@@ -1,0 +1,15 @@
+.pagination {
+	justify-content: end;
+}
+
+.pagination .page-item .page-link {
+	padding: 10px 15px;
+	font-size: 13px;
+	color: #0093e9;
+}
+
+.pagination .page-item.active .page-link {
+	background-color: #0093e9 !important;
+	border-color: #0093e9;
+	color: #fff;
+}

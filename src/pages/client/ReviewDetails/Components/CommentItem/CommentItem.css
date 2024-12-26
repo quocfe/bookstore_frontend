@@ -1,0 +1,38 @@
+.dots-three {
+	position: relative;
+}
+
+.fa-ellipsis {
+	display: inline-block;
+	padding: 10px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.delete-div {
+	position: absolute;
+	right: -20px;
+	bottom: 40px;
+	background-color: #fff;
+	width: 70px;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	cursor: pointer;
+	display: none;
+}
+
+.delete-div.show {
+	display: flex;
+}
+
+.delete-div p {
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.fa-ellipsis:hover {
+	background: #d3d3d3;
+}

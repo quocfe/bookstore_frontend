@@ -1,0 +1,13 @@
+#reviewDetails {
+	margin-top: 40px;
+}
+
+#reviewDetails img {
+	height: 70vh;
+	object-fit: cover;
+}
+
+#reviewDetails h1,
+#reviewDetails h2 {
+	font-size: 30px !important;
+}

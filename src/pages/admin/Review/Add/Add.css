@@ -1,0 +1,18 @@
+#staticBackdropLabel {
+	font-size: 20px !important;
+	color: #0093e9 !important;
+	font-weight: 600;
+}
+
+.modal-dialog {
+	max-width: 700px !important;
+}
+
+.modal-content {
+	padding: 10px;
+}
+
+select {
+	height: 40px;
+	font-size: 14px !important;
+}

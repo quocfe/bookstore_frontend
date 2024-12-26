@@ -1,0 +1,57 @@
+.signUp-form {
+	width: 300px;
+}
+
+.signUp {
+	background: var(--grey-color);
+	width: 50vw;
+	margin: 10% auto;
+	padding: 40px 0;
+}
+
+.form-group {
+	align-items: flex-start;
+	margin-bottom: 15px;
+}
+
+.form-group label {
+	font-size: 14px;
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+.form-group input {
+	padding: 10px 15px;
+	width: 100%;
+	font-size: 13px;
+	color: var(--light-black-color);
+	font-weight: 500;
+	border-radius: 8px;
+}
+
+.btn-signUp {
+	margin-top: 20px;
+	background: var(--purple-color);
+	color: var(--white-color);
+	width: 100%;
+	border-radius: 8px;
+	height: 40px;
+	font-size: 16px;
+}
+
+.link {
+	font-size: 14px;
+	margin-top: 20px;
+	display: inline-block;
+	font-weight: 500;
+}
+
+.link a {
+	color: var(--purple-color);
+}
+.signUp span {
+	color: red;
+	font-size: 12px;
+	font-weight: 500;
+	text-indent: 10px;
+}
