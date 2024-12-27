@@ -4,10 +4,10 @@
 	object-fit: contain;
 	object-position: bottom center;
 }
-#review img.large {
+/* #review img.large {
 	width: 200px;
 	height: 150px;
-}
+} */
 
 #review .head {
 	height: 40px;

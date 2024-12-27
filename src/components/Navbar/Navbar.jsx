@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import logoImg from '../../images/logo.png';
 import { logOut } from '../../redux/apiRequest';
@@ -10,6 +10,7 @@ const Navbar = () => {
 	const [toggleMenu, setToggleMenu] = useState(false);
 	const handleNavbar = () => setToggleMenu(!toggleMenu);
 	const user = JSON.parse(localStorage.getItem('user'));
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -23,7 +24,7 @@ const Navbar = () => {
 				<div className="brand-and-toggler flex flex-sb">
 					<Link to="/" className="navbar-brand flex">
 						<img src={logoImg} alt="site logo" />
-						<span className="text-uppercase fw-7 fs-24 ls-1">bookpoly</span>
+						<span className="text-uppercase fw-7 fs-24 ls-1">BookReview</span>
 					</Link>
 					<button
 						type="button"
@@ -60,14 +61,16 @@ const Navbar = () => {
 						</li>
 						{user ? (
 							<>
-								<li className="nav-item">
-									<Link
-										to={user?.isAdmin ? '/admin' : ''}
-										className="nav-link text-uppercase  fs-22 fw-6 ls-1"
-									>
-										{user.username}
-									</Link>
-								</li>
+								{user?.isAdmin != 'false' && (
+									<li className="nav-item">
+										<Link
+											to={'/admin'}
+											className="nav-link text-uppercase  fs-22 fw-6 ls-1"
+										>
+											{user.username}
+										</Link>
+									</li>
+								)}
 								<li className="nav-item cursor-pointer" onClick={handleLogout}>
 									<Link className="nav-link text-uppercase fs-22 fw-6 ls-1">
 										Log out

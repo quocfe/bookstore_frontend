@@ -35,7 +35,7 @@ const SearchForm = () => {
 								onChange={handleSearch}
 							/>
 							<button type="submit" className="flex flex-c">
-								<FaSearch className="text-purple" size={32} />
+								<FaSearch className="icon_search" size={32} />
 							</button>
 						</div>
 					</form>

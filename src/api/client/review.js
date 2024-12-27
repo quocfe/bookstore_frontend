@@ -9,6 +9,10 @@ const reviewApi = {
 		const url = `review?page=${page}&limit=${limit}`;
 		return axiosRoute.get(url);
 	},
+	getTop5() {
+		const url = `review/top5`;
+		return axiosRoute.get(url);
+	},
 	getOne(id) {
 		const url = `review/${id}`;
 		return axiosRoute.get(url);

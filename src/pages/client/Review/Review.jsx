@@ -1,61 +1,62 @@
-import _, { orderBy } from 'lodash';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import reviewApi from '../../../api/client/review';
-import InfiniteScroll from '../../../components/InfiniteScroll/InfiniteScroll';
-import Navbar from './../../../components/Navbar/Navbar';
-import Pagination from './../../../components/Paginate/Paginate';
-import './Review.css';
-import ReviewItem from './components/Reviewitem';
-import Loader from './../../../components/Loader/Loader';
 import GoToTopButton from '../../../components/GoToTopButton/GoToTopButton';
-
+import InfiniteScroll from '../../../components/InfiniteScroll/InfiniteScroll';
+import Navbar from '../../../components/Navbar/Navbar';
+import './Review.css';
+import ReviewItem from './components/ReviewItem';
+//update
 const Review = () => {
 	const [reviews, setReviews] = useState([]);
-	const [reviewsSort, setReviewsSort] = useState([]);
+	const [reviewsTop5, setReviewsTop5] = useState([]);
 	const [page, setPage] = useState(1);
-	const [totalRows, setTotalRows] = useState(0);
+	const [totalPages, setTotalPages] = useState(0);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const response = await reviewApi.getAll(1, 100);
-			const reviewData = await Promise.all(
-				response.data.data.map(async ({ idProduct }) => {
-					const { data } = await reviewApi.selectByProduct(idProduct);
-					return data[0];
-				})
+	// Load reviews (initial and more)
+	const fetchReviews = useCallback(async (page = 1, append = false) => {
+		try {
+			const response = await reviewApi.getAll(page, 5);
+			const newReviews = response.data.data;
+			setReviews((prevReviews) =>
+				append ? [...prevReviews, ...newReviews] : newReviews
 			);
-			const reviewSort = orderBy(reviewData, ['view'], ['desc']);
-			const reviewTop5 = _.take(reviewSort, 5);
-			setReviewsSort(reviewTop5);
-		};
-
-		fetchData();
+			setTotalPages(response.data.pagination.totalPage);
+		} catch (error) {
+			console.error('Error fetching reviews:', error);
+		}
 	}, []);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const response = await reviewApi.getAll(page, 4);
-			const reviewData = await Promise.all(
-				response.data.data.map(async ({ idProduct }) => {
-					const { data } = await reviewApi.selectByProduct(idProduct);
-					return data[0];
-				})
-			);
+	// Load top 5 reviews
+	const fetchTop5Reviews = useCallback(async () => {
+		try {
+			const response = await reviewApi.getTop5();
+			setReviewsTop5(response.data);
+		} catch (error) {
+			console.error('Error fetching top 5 reviews:', error);
+		}
+	}, []);
 
-			setReviews([...reviews, ...reviewData]);
-			setTotalRows(response.data.pagination.totalPage);
-		};
-		fetchData();
-	}, [page]);
+	// Initial data load
+	useEffect(() => {
+		fetchReviews(1);
+		fetchTop5Reviews();
+	}, [fetchReviews, fetchTop5Reviews]);
+
+	// Load more reviews when page changes
+	useEffect(() => {
+		if (page > 1) {
+			fetchReviews(page, true);
+		}
+	}, [page, fetchReviews]);
 
 	return (
 		<>
 			<Navbar />
 			<GoToTopButton />
-
 			<div className="container mt-5" id="review">
 				<div className="row gap-5">
-					<div className="col-lg-8 ">
+					{/* Main review section */}
+					<div className="col-lg-8">
 						<div className="row head">
 							<div className="col-sm-3">Review</div>
 						</div>
@@ -63,21 +64,23 @@ const Review = () => {
 							loader={<p>Loading...</p>}
 							className="row mt-5 gap-4"
 							fetchMore={() => setPage((prev) => prev + 1)}
-							hasMore={page < totalRows}
+							hasMore={page < totalPages}
 							endMessage={<p>You have seen it all</p>}
 						>
-							{reviews?.map((review) => (
-								<ReviewItem type="large" key={review.idReview} {...review} />
+							{reviews.map((review, index) => (
+								<ReviewItem type="large" key={index} {...review} />
 							))}
 						</InfiniteScroll>
 					</div>
+
+					{/* Top 5 reviews section */}
 					<div className="col-lg-3">
 						<div className="row head">
 							<p>Top 5 xem nhiều</p>
 						</div>
 						<div className="row gap-4 mt-5">
-							{reviewsSort?.map((review) => (
-								<ReviewItem type="small" key={review.idReview} {...review} />
+							{reviewsTop5.map((review, index) => (
+								<ReviewItem type="small" key={index} {...review} />
 							))}
 						</div>
 					</div>

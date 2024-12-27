@@ -4,7 +4,8 @@ import userApi from './client/user';
 import { jwtDecode } from 'jwt-decode';
 
 const axiosRoute = axios.create({
-	baseURL: 'https://bookstore-backend-lac.vercel.app/v1/api/',
+	baseURL: 'http://localhost:8080/v1/api/',
+	// baseURL: 'https://bookstore-backend-lac.vercel.app/v1/api/',
 	withCredentials: true,
 });
 
