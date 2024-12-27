@@ -22,9 +22,7 @@ import { addComments } from './commentSlice';
 const loginUser = async (user, dispatch, navigate) => {
 	dispatch(loginStart());
 	try {
-		console.log('ok');
 		const response = await authApi.login(user);
-		console.log('res', response);
 		const { accessToken, username, password, isAdmin } = response.data.user;
 		const newUser = {
 			username,
