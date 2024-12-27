@@ -4,8 +4,8 @@ import GoToTopButton from '../../../components/GoToTopButton/GoToTopButton';
 import InfiniteScroll from '../../../components/InfiniteScroll/InfiniteScroll';
 import Navbar from '../../../components/Navbar/Navbar';
 import './Review.css';
-import ReviewItem from './components/ReviewItem';
-//update
+import ReviewCard from './components/ReviewCard';
+
 const Review = () => {
 	const [reviews, setReviews] = useState([]);
 	const [reviewsTop5, setReviewsTop5] = useState([]);
@@ -68,7 +68,7 @@ const Review = () => {
 							endMessage={<p>You have seen it all</p>}
 						>
 							{reviews.map((review, index) => (
-								<ReviewItem type="large" key={index} {...review} />
+								<ReviewCard type="large" key={index} {...review} />
 							))}
 						</InfiniteScroll>
 					</div>
@@ -80,7 +80,7 @@ const Review = () => {
 						</div>
 						<div className="row gap-4 mt-5">
 							{reviewsTop5.map((review, index) => (
-								<ReviewItem type="small" key={index} {...review} />
+								<ReviewCard type="small" key={index} {...review} />
 							))}
 						</div>
 					</div>

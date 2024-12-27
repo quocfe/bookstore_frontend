@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 
-const ReviewItem = ({
+const ReviewCard = ({
 	nameProduct,
 	images,
 	createAt,
@@ -75,4 +74,4 @@ const ReviewItem = ({
 	);
 };
 
-export default ReviewItem;
+export default ReviewCard;
