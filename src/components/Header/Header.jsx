@@ -7,8 +7,8 @@ const Header = () => {
 		<header className="header">
 			<Navbar />
 			<div className="header-content flex flex-c text-center text-white">
-				<h2 className="header-title text-capitalize">
-					Đọc sách là đứng lên vai người khổng lồ.
+				<h2 className=" header-title text-capitalize">
+					Đọc sách là đứng lên vai người khổng lồ
 				</h2>
 				<br />
 				<p className="header-text fs-18 fw-3">

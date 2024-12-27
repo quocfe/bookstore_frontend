@@ -9,6 +9,12 @@
 	padding: 40px 0;
 }
 
+@media screen and (max-width: 640px) {
+	.signIn {
+		width: 100%;
+	}
+}
+
 .form-group {
 	align-items: flex-start !important;
 	margin-bottom: 15px;

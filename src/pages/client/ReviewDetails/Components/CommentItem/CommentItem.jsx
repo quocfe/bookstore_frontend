@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Star from '../../../BookDetails/component/Star/Star';
 import './CommentItem.css';
 import commentsApi from './../../../../../api/client/comments';
@@ -40,8 +40,8 @@ const CommentItem = ({ comment, idProduct }) => {
 		>
 			<div className="col-lg-1">
 				<img
-					src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
-					className="rounded-circle shadow-1-strong me-3"
+					src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
+					className="rounded-circle shadow-1-strong me-3 avatar_cmt"
 				/>
 			</div>
 			<div className="col-lg-11">

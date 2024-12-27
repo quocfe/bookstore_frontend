@@ -24,7 +24,7 @@ const FormComment = ({ idProduct, idReview }) => {
 		rating: 1,
 		idUser: userCurrent.id,
 		idReview: +idReview,
-		idProduct: idProduct,
+		idProduct: +idProduct,
 	});
 
 	useEffect(() => {

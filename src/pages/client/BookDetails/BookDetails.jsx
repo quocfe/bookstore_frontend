@@ -73,7 +73,10 @@ const BookDetails = () => {
 									<span className="fw-6">Isbn:</span>
 									<span> {book[0]?.isbn}</span>
 								</div>
-								<Link to={`/review`} className="btn btn-primary btnShowReview">
+								<Link
+									to={`/review/${book[0]?.idProduct}`}
+									className="btn btn-primary btnShowReview"
+								>
 									Xem review
 								</Link>
 							</div>
@@ -93,7 +96,7 @@ const BookDetails = () => {
 							<span className="fw-6 fs-24">Sách cùng loại</span>
 						</div>
 						<div className="row">
-							<div className="col-lg-12">
+							<div className="col-lg-12 ">
 								<SlideShow items={bookType} />
 							</div>
 						</div>

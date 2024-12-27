@@ -8,7 +8,7 @@ const ReviewCard = ({
 	view,
 	sortDescription,
 	type,
-	idReview,
+	idProduct,
 }) => {
 	const generationDate = (datetimeString) => {
 		let time;
@@ -32,7 +32,7 @@ const ReviewCard = ({
 				<div className="col-sm-9">
 					{type == 'large' ? (
 						<div className="content">
-							<Link to={`/review/${idReview}`}>
+							<Link to={`/review/${idProduct}`}>
 								<div className="title fw-7 fs-18">{nameProduct}</div>
 							</Link>
 							<div className="row mt-2">
@@ -58,7 +58,7 @@ const ReviewCard = ({
 						</div>
 					) : (
 						<div className="content">
-							<Link to={`/review/${idReview}`}>
+							<Link to={`/review/${idProduct}`}>
 								<div className="title fw-7 fs-18">{nameProduct}</div>
 							</Link>
 							<div className="sortDescription">

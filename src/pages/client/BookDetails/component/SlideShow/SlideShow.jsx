@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Autoplay, Keyboard, Mousewheel, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import useViewport from '../../../../../hooks/useViewPort';
 import './SlideShow.css';
-import { Link } from 'react-router-dom';
 
 const SlideShow = ({ items }) => {
+	const { width } = useViewport();
+
 	const scrollToTop = () => {
 		// Lấy chiều cao của header
 		const header = document.querySelector('.header');
@@ -25,8 +28,8 @@ const SlideShow = ({ items }) => {
 			modules={[Autoplay, Navigation, Mousewheel, Keyboard]}
 			cssMode={true}
 			spaceBetween={30}
-			slidesPerView={4}
-			navigation={true}
+			slidesPerView={width < 1024 ? 2 : 4}
+			navigation={width < 1024 ? false : true}
 			mousewheel={true}
 			keyboard={true}
 			// autoplay={{

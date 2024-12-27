@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import Navbar from '../../../components/Navbar/Navbar';
 import reviewApi from '../../../api/client/review';
-import './ReviewDetails.css';
-import StarRating from './../../../components/StarRating/StarRating';
+import Navbar from '../../../components/Navbar/Navbar';
+import GoToTopButton from './../../../components/GoToTopButton/GoToTopButton';
 import Comments from './Components/Comments/Comments';
 import FormComment from './Components/FormComment/FormComment';
 import RatingAverage from './Components/RatingAverage/RatingAverage';
-import GoToTopButton from './../../../components/GoToTopButton/GoToTopButton';
+import './ReviewDetails.css';
 
 const ReviewDetails = () => {
 	const { id } = useParams();
@@ -17,8 +16,9 @@ const ReviewDetails = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				await reviewApi.updateView(id);
 				const response = await reviewApi.getOne(id);
+
+				await reviewApi.updateView(response.data[0].idReview);
 				setReview(response.data[0]);
 			} catch (error) {
 				console.error(error);
@@ -38,11 +38,7 @@ const ReviewDetails = () => {
 			<div className="container" id="reviewDetails">
 				<GoToTopButton />
 				<Link to="/review">
-					<button
-						type="button"
-						className="flex flex-c back-btn"
-						fdprocessedid="480q88"
-					>
+					<button type="button" className="flex flex-c back-btn">
 						<svg
 							stroke="currentColor"
 							fill="currentColor"
@@ -71,12 +67,15 @@ const ReviewDetails = () => {
 									Bình luận/Đánh giá <strong>({totalComments})</strong>
 								</span>
 							</div>
-							<RatingAverage idReview={id} totalComments={totalComments} />
-							<FormComment idProduct={review.idProduct} idReview={id} />
+							<RatingAverage
+								idReview={review.idReview}
+								totalComments={totalComments}
+							/>
+							<FormComment idProduct={id} idReview={review.idReview} />
 							<Comments
 								totalComments={setTotalComments}
-								idReview={id}
-								idProduct={review.idProduct}
+								idReview={review.idReview}
+								idProduct={id}
 							/>
 						</div>
 					</div>

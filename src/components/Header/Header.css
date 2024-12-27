@@ -7,9 +7,16 @@
 .header-title {
 	font-size: 4.2rem;
 }
+
 .header-text {
 	margin-top: -1.8rem;
 	margin-bottom: 2.8rem;
 	opacity: 0.8;
 	max-width: 770px;
+}
+
+@media (max-width: 768px) {
+	.header-content {
+		padding: 0 20px; /* Smaller font size on tablets */
+	}
 }
